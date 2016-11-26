@@ -15,11 +15,7 @@ skipx
 zerombr
 
 clearpart --all --initlabel
-part /boot --fstype xfs --size=500
-part swap --size=2048
-part pv.01      --size=1000     --grow  --ondisk=sda
-volgroup vg00 pv.01
-logvol / --vgname=vg00  --fstype=xfs  --size=2048 --name=lv_root --grow
+autopart
 
 auth  --useshadow  --enablemd5
 firstboot --disabled
