@@ -1,3 +1,34 @@
+# How to use
+
+* Disk size is adjustable in the `packer-template.json`:
+```
+      "disk_size": 400000,
+```
+
+* Build box with packer:
+```
+$ packer build packer-template.json
+```
+
+* Add box to Vagrant
+```
+$ vagrant box add --name dcos-centos-virtualbox-400g dcos-centos-virtualbox.box
+```
+
+* Use box in the `dcos-vagrant` project. Edit the `VagrantConfig.yaml`
+```
+a1:
+  ip: 192.168.65.111
+  cpus: 4
+  memory: 6144
+  memory-reserved: 512
+  type: agent-private
+  box: dcos-centos-virtualbox-400g
+  box-version: =0
+```
+
+* That's it. Now vagrant up!
+
 # DC/OS Vagrant Box
 
 Vagrant box builder for [dcos-vagrant](https://github.com/mesosphere/dcos-vagrant) using [Packer](https://www.packer.io/).
